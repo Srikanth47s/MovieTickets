@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(212, 210, 210);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #moive-ticket-container{
+          max-width: 90%;
+          background-color: white;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0px 0px 10px gray;
+          max-width: 350px;
+        }
+        label{
+            font-weight: bold;
+            font-size: 14px;
+        }
+        select,input{
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 12px;
+            padding: 4px;
+            border-radius: 5px;
+            border: 0.2px solid;
+        }
+        button{
+            width: 100%;
+            box-sizing: border-box;
+            background-color: rgb(61, 61, 192);
+            color: white;
+            font-weight: bold;
+            border: none;
+            padding: 4px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+        button:hover{
+            background-color: blue;
+        }
+        h2{
+            font-size: 1.5em;
+            text-align: center;
+            margin: 15px 15px;
+        }
+        p{
+            width: 100%;
+            background-color: rgb(165, 160, 160);
+            color: white;
+            font-size: 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="moive-ticket-container">
+        <h2>Movie Ticket Booking</h2>
+<form action="">
+
+            <label for="drop-down-movie">Select Movie:</label><br>
+            <select  id="drop-down-movie" required>
+                <option value="Select a movie" disabled selected>Select a movie</option>
+                <option value="Movie 1">Movie 1</option>
+                <option value="Movie 2">Movie 2</option>
+                <option value="Movie 3">Movie 3</option>
+            </select><br>
+
+
+
+            <label for="drop-down-time">Select Showtime:</label><br>
+            <select id="drop-down-time" required>
+                <option value="" disabled selected>Select Showtime</option>
+                <option value="11:45 AM">11:45 AM</option>
+                <option value="2:45 PM">2:45 PM</option>
+                <option value="6:30 PM">6:30 PM</option>
+                <option value="9:45 PM">9:45 PM</option>
+            </select><br>
+
+
+            <label for="seats" >Number Of Seats:</label><br>
+            <input id="seats" type="number" class="width" placeholder="Select No of Seats" min="1" max="6" required><br>
+
+
+
+            <button type="button" id="btn" onclick="movieBook()">Book Tickets</button>
+        </form>
+            <p id="Booking-msg"></p>
+
+
+    </div>
+
+    <script>
+        const movieName = document.getElementById("drop-down-movie");
+        const movieTime = document.getElementById("drop-down-time");
+        const noOfSeats = document.getElementById("seats");
+
+        const message = document.getElementById("Booking-msg");
+// console.log(movieTime.value+movieName.value)
+        function movieBook(){
+            if(movieName.value === "" || movieTime.value === ""){
+                window.alert("Please Select the Movie and Showtime");
+                
+            }else if(noOfSeats.value > 0 && 6 >= noOfSeats.value){
+               message.innerHTML =  `Booking Confirmed.Movie: ${movieName.value} Showtime: ${movieTime.value} Number of Seats: ${noOfSeats.value}`;
+            }else{
+                message.innerHTML = "You Can Select The Movie, Showtime and Minimum 1 to Maximum 6 Tickets Only";
+            }
+            
+        }
+
+        
+
+    </script>
+</body>
+
+</html>
